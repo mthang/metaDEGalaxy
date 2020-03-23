@@ -1,0 +1,98 @@
+<tool id="uclust2otutable" name="OTUTable" version="1.0.0">
+  <description>Convert UCLUST format from Vsearch to OTU Table</description>
+  <version_command>
+	python ${__tool_directory__}/uclust2otutable.py --version
+  </version_command>
+  <command detect_errors="aggressive">
+    python ${__tool_directory__}/uclust2otutable.py 
+	-i '$inputfile' 
+	-o '$output'
+  </command>
+  <inputs>
+    <param format="tabular" name="inputfile" type="data" label="UCLUST from Vsearch" />
+  </inputs>
+  <outputs>
+    <data format="tabular" name="output" label="OTU_TABLE_${inputfile.display_name}"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="inputfile" value="uc_input.txt"/>
+      <output name="output" file="table_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+** what it does **
+
+Converts UCLUST format (.uc) output from Vsearch search into raw count table. The description of UCLUST format is based on the information that can be found on UCLUST_ documentation page.
+
+.. _UCLUST: http://www.drive5.com/uclust/uclust_userguide_1_1_579.html
+
+--------
+
+=======
+Example
+=======
+    
+Some example records:
+---------------------
+
+==== ======= ==== ==== ====== === === ========= ========== ======
+Type Cluster Size %Id  Strand Qlo Tlo Alignment Query      Target
+---- ------- ---- ---- ------ --- --- --------- ---------- ------
+   S       0  292  '*'   '*'  '*' '*'    '*'    AH70_12410  '*'
+   H       0  292 99.7   '+'   0   0     292M   AH70_12410  '*'
+   S       0  292  '*'   '*'  '*' '*'    '*'    AH70_12410  '*'
+   H       0  292 98.2   '+'   0   0     292M   AH70_12410  '*'
+==== ======= ==== ==== ====== === === ========= ========== ======
+
+Each record has ten fields, separated by tabs:
+----------------------------------------------
+
+========= ===========================================
+Column    Description
+--------- -------------------------------------------
+Type      Record type
+Cluster   Cluster number
+Size      Sequence length or cluster size
+%Id       Identity to the seed(as a percentage), or * if this is a seed.
+Strand    '+' plus strand, '-' minus strand, or '.' amino acids.
+Qlo       0-based coordinate of alignment start in the query sequence.
+Tlo       0-based coordinate of alignment start in target (seed) sequence. If minus strand, Tlo is relative to start of reverse-complement target.
+Alignment Compressed representation of alignment to the seed(see below), or '*' if a seed.
+Query     FASTA label of query sequence
+Target    FASTA label of target(seed / library / database) sequence. or '*' if a seed.
+========= ===========================================
+
+Record Types are:
+-----------------
+
+====== ===========================================
+Column Description
+------ -------------------------------------------
+L      Library seed(generated only if a match if found to this seed).
+S      New seed.
+H      Hit, also known as an accept; i.e. a successful match.
+D      Library cluster.
+C      New cluster.
+N      Not matched (a sequence that didn't match library with --libonly specified).
+R      Reject (generated only if --output_rejects is specified)
+====== ===========================================
+
+The alignment is compressed using run-length encoding, as follows. Each column in the alignment is classified as M,D or I:
+--------------------------------------------------------------------------------------------------------------------------
+
+==== ====== ============== =============
+Code Name   Query sequence Seed sequence
+---- ------ -------------- -------------
+M    Match  Letter         Letter
+D    Delete Gap            Letter
+I    Insert Letter         Gap
+==== ====== ============== =============
+
+--------
+
+
+  </help>
+
+</tool>
