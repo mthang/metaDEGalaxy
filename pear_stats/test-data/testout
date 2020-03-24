@@ -1,0 +1,8 @@
+F3D0	Assembled reads ...................: 91 / 99 (91.919%)	Discarded reads ...................: 0 / 99 (0.000%)	Not assembled reads ...............: 8 / 99 (8.081%)
+
+
+
+The above assessment has been performed on 1000 randomly selected reads per sample file.
+Average % of overlapping paired-end reads =	91.919	
+If the average percentage is greater than 50%, you can consider using workflow 16S_biodiversity_for_overlap_PE.
+However, if the average percentage is less than 50%, use 16S_biodiversity_nonoverlap_PE.

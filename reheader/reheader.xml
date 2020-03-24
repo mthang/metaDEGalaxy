@@ -1,0 +1,69 @@
+<tool id="rename" name="reheader" version="1.0.0" force_history_refresh="True">
+  <description>Rename sequence header in FASTQ file</description>
+  <requirements>
+    <requirement type="package" version="1.74">biopython</requirement>
+  </requirements>
+  <version_command>
+	    python ${__tool_directory__}/reheader.py --version
+  </version_command>
+  <command detect_errors="aggressive">
+        python  ${__tool_directory__}/reheader.py $inputfile.display_name $inputfile $output $log.files_path $log
+  </command>
+
+  <inputs>
+    <param format="fastq,fastq.gz,fastq.bz2" name="inputfile" type="data" label="Short read data from your current history"/>
+  </inputs>
+  <outputs>
+    <data name="output" format="fastq" label="${tool.name}.${inputfile.display_name}"/>
+    <data name="log" format="txt" label="${tool.name}.${inputfile.display_name}.log"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="test_input" value="test_input.txt"/>
+      <output name="test_outout" file="test_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+**what it does**
+
+Renames sequence header in FASTQ file by appending SAMPLEFILENAME/1 to the end of the sequence header for the forward read or SAMPLEFILENAME_2 to the end of the sequence header for the reverse read using python_ and Biopython_
+
+.. _python : https://www.python.org/downloads/release/python-370/
+.. _Biopython : https://biopython.org/
+
+-----
+
+Forward Read
+------------
+**Input**
+
+- **sequence header** : @M03033:102:000000000-ATN0P:1:1101:9793:1042
+
+**Output**
+
+- **sequence header** : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/1
+
+Reverse Read
+------------
+
+**Input**
+
+- **sequence header** : @M03033:102:000000000-ATN0P:1:1101:9793:1042
+
+**Output**
+
+- **sequence header** : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/2
+
+-----
+
+=========
+Resources
+=========
+
+**Wrapper Authors**
+
+QFAB Bioinformatics (support@qfab.org)
+  </help>
+
+</tool>

@@ -1,0 +1,95 @@
+<tool id="phyloseq_abundance" name="Phyloseq Abundance plot" version="1.22.3.2" hidden="false">
+  <description>Phyloseq Abundance Plot with the factors of choice</description>
+    <requirements>
+	   <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
+	   <requirement type="package" version="1.20.0">r-getopt</requirement>
+	   <requirement type="package" version="9.18">ghostscript</requirement>
+	</requirements>
+  <version_command><![CDATA[
+          echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
+  ]]></version_command>
+  <command detect_errors="exit_code"><![CDATA[
+  	Rscript '${__tool_directory__}/phyloseq_abundance_factor.r'
+    #if str($factor.type) == "one":
+    	--biomfile=$biom_input 
+		--metafile=$metadata_input 
+		--xcolumn="${xaxis_column}" 
+		--lcolumn="${legend_column}" 
+		--factor1="${factor.factor_column1}" 
+		--outdir="$htmlfile.files_path" 
+		--htmlfile='$htmlfile'
+    #else if str($factor.type) == "two":
+        --biomfile='$biom_input' 
+		--metafile='$metadata_input' 
+		--xcolumn="${xaxis_column}" 
+		--lcolumn="${legend_column}" 
+		--factor1="${factor.factor_column1}" 
+		--factor2="${factor.factor_column2}" 
+		--outdir="$htmlfile.files_path" 
+		--htmlfile='$htmlfile'
+    #end if
+ ]]> </command>
+
+ 
+  <inputs>
+
+    <param format="biom1" name="biom_input" type="data" label="BIOM file"/>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
+    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used for X-axis"/>
+    <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as legend"/>
+    <conditional name="factor">
+      <param name="type" type="select" label="Is this one factor or two factor">
+              <option value="one">1</option>
+              <option value="two">2</option>
+      </param>
+      <when value="one">
+				<param name="factor_column1" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 1"/>
+      </when>
+      <when value="two">
+				<param name="factor_column1" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 1"/>
+				<param name="factor_column2" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 2"/>
+      </when>
+    </conditional>
+
+  </inputs>
+ 
+  <outputs>
+        <data format="html" name="htmlfile" label="${tool.name}.html"/>
+  </outputs>
+
+  <tests>
+	 <test>
+	    <param name="biom_input" value="test.biom" ftype="biom1" />
+		<param name="metadata_input" value="metadata.txt"/>
+		<param name="xaxis_column" value="5" />
+		<param name="legend_column" value="3" />
+		<param name="type" value="1" />
+		<param name="factor_column1" value="4"/>
+		<output name="htmlfile" ftype="html" file="abundace_factor.html" />
+	</test>
+  </tests>
+
+  <help>
+**What it does**
+Creates an abundance barplot using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_bar-examples.html
+
+-----
+
+**Input**
+
+
+- **BIOM file** - this is a BIOM_ file format
+- **Metadata file** - this is a metadata file of the experiment design
+- **Column used for X-axis** - The horizontal x-axis display on the barplot.
+- **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
+- **Is this one factor or two factor** - This is the facet_grid feature of phyloseq's plot_bar to allow plotting with two factors (e.g, facet_grid=~protein + allergy)
+- **Column used as factor 1** - This useds to select the first factor for facet_grid feature from the metadata file
+
+.. _BIOM: http://biom-format.org/
+
+-----
+
+  </help>
+</tool>
