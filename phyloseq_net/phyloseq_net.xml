@@ -1,0 +1,109 @@
+<tool id="phyloseq_net" name="Phyloseq Network Plot" version="1.22.3" hidden="false">
+  <description>Phyloseq Network Plot</description>
+  <requirements>
+        <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
+        <requirement type="package" version="1.20.0">r-getopt</requirement>
+        <requirement type="package" version="9.18">ghostscript</requirement>
+  </requirements>
+  <version_command><![CDATA[
+          echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
+              ]]></version_command>
+  <command detect_errors="exit_code"><![CDATA[
+    Rscript '${__tool_directory__}/phyloseq_net.r'
+    #if str($file_source.file_source_selector) == "set_biom":
+        --infile='$input' 
+        --metafile='$metadata_input' 
+        --biom="${file_source.file_source_selector}" 
+        --xcolumn="${xaxis_column}" 
+        --lcolumn="${legend_column}" 
+        --outdir="$htmlfile.files_path" 
+        --htmlfile='$htmlfile'
+    #else:
+        --infile='$input' 
+        --metafile='$metadata_input' 
+        --biom="${file_source.file_source_selector}" 
+        --obsfile="${file_source.obstable}" 
+        --norm="${file_source.norm_bool}" 
+        --xcolumn="${xaxis_column}" 
+        --lcolumn="${legend_column}" 
+        --outdir="$htmlfile.files_path" 
+        --htmlfile='$htmlfile'
+    #end if
+  ]]></command>
+ 
+  <inputs>
+
+    <conditional name="file_source">
+      <param name="file_source_selector" type="select" label="Choose a file type">
+	<option value="set_biom" selected="True"> BIOM File</option>
+	<option value="set_table"> Count File </option>
+      </param>
+      <when value="set_biom">
+	 <param format="biom1" name="input" type="data" label="Input File"/>
+
+      </when>
+      <when value="set_table">
+	<param format="tabular" name="input" type="data" label="Input File"/>
+	<param format="tabular" name="obstable" type="data" label="Observation file"/>
+	<param name="norm_bool" type="boolean" truevalue="true" falsevalue="false" checked="false" label="is the data normalised?"/>
+      </when>
+    </conditional>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
+    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Select a group for distance matrix"/>
+    <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as legend"/>
+  </inputs>
+ 
+  <outputs>
+        <data format="html" name="htmlfile" label="${tool.name}.html"/>
+  </outputs>
+
+  <tests>
+  	 <test>  <!-- Test #1: Test BIOM format input -->
+	 		<conditional name="file_source">
+				<param name="file_source_selector" value="set_biom"/>
+				<param name="input" value="GP.biom" ftype="biom1" />
+				<param name="norm_bool" value="false"/>
+				<param name="xaxis_column" value="5" />
+				<param name="legend_column" value="4" />
+			 </conditional>
+			 <output name="htmlfile" ftype="html" file="biom_out.html" />
+	 </test>
+	 <test>  <!-- Test #2: Test TABULAR format inputs -->
+	 		<conditional name="file_source">
+				 <param name="file_source_selector" value="set_table" />
+				 <param name="OTU_TABLE" value="count.txt" />
+				 <param name="TAX_TABLE" value="observation.txt" />
+				 <param name="META_TABLE" value="metadata.txt" />
+				 <param name="norm_bool" value="true" />
+				 <param name="xaxis_column" value="5" />
+				 <param name="legend_column" value="4" />
+			</conditional>
+			<output name="htmlfile" ftype="html" file="test.html" />
+	 </test>
+  </tests>
+
+  <help>
+**What it does**
+Creates a correlation network plot between samples using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_network-examples.html
+
+-----
+
+**Input**
+
+
+- **Choose a file type** - choose the input file type (e.g., BIOM or count table)
+- **Input file** - choose the input file
+- **Observation** - appear only if the "count table" selected in "choose a file type"
+- **is the data normalised** - appear only if the "count table" selected in "choose a file type"
+- **Select a group for distance matrix** - This group will be used to calculate the distance matrix
+- **Column used as legend** - select a group from the metadata for legend
+
+
+.. _BIOM: http://biom-format.org/
+
+-----
+
+  </help>
+</tool>

@@ -1,0 +1,95 @@
+<tool id="pearStat" name="PEAR Statistics" version="1.0.0" force_history_refresh="True">
+  <description>Generate paired-end reads overlap Statistic from PEAR log file</description>
+    <version_command>
+	    python ${__tool_directory__}/pear_stats.py --version
+	</version_command>
+  <command detect_errors="aggressive"><![CDATA[
+      #set files=""
+      #for $index,$file in enumerate($input):
+        #set $files += str($file)+","
+      #end for
+      #set $files=$files[:-1]
+
+      #set names=','.join( [ str( $name ) for $name in $input.keys() ])      
+
+      python $__tool_directory__/pear_stats.py "$files" "$names" $output
+   ]]> </command>
+  <inputs>
+    <param name="input" type="data_collection" format="txt" label="FASTQ file"/>
+  </inputs>
+  <outputs>
+    <!--<data format="tabular" name="output" label="${tool.name}.${input.display_name}"/>-->
+    <data format="tabular" name="output" label="${tool.name}.log"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="input" value="F3D0.log"/>
+      <output name="test_output" file="test_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+** what it does **
+
+Creates summary log file by extracting "Assembled reads", "Discarded reads" and "Not assembled reads" from PEAR_ log.
+
+.. _PEAR: https://sco.h-its.org/exelixis/web/software/pear/doc.html
+
+-----
+
+=======
+Example
+=======
+
+PEAR v0.9.6 [January 15, 2015]
+
+Citation - PEAR: a fast and accurate Illumina Paired-End reAd mergeR
+Zhang et al (2014) Bioinformatics 30(5): 614-620 | doi:10.1093/bioinformatics/btt593
+
+==================================== =======================================
+Field                                Parameter and output
+------------------------------------ ---------------------------------------
+Forward reads file.................: /mnt/galaxy/files/014/dataset_14938.dat
+Reverse reads file.................: /mnt/galaxy/files/014/dataset_14939.dat
+PHRED..............................: 33
+Using empirical frequencies........: NO
+Statistical method.................: OES
+Maximum assembly length............: 999999
+Minimum assembly length............: 50
+p-value............................: 0.010000
+Quality score threshold (trimming).: 0
+Minimum read size after trimming...: 1
+Maximal ratio of uncalled bases....: 1.000000
+Minimum overlap....................: 10
+Scoring method.....................: Scaled score
+Threads............................: 2
+
+Allocating memory..................: 200,000,000 bytes
+Assemblying reads: 0%
+Assemblying reads: 100%
+
+Assembled reads ...................: 906 / 990 (91.515%)
+Discarded reads ...................: 0 / 990 (0.000%)
+Not assembled reads ...............: 84 / 990 (8.485%)
+Assembled reads file...............: pear.assembled.fastq
+Discarded reads file...............: pear.discarded.fastq
+Unassembled forward reads file.....: pear.unassembled.forward.fastq
+Unassembled reverse reads file.....: pear.unassembled.reverse.fastq
+==================================== =======================================
+
+
+-----
+
+=========
+Resources
+=========
+
+**Wrapper Authors**
+
+QFAB Bioinformatics (support@qfab.org)
+
+  </help>
+  <citations>
+       <citation type="doi">10.1093/bioinformatics/btt593</citation>
+  </citations>
+</tool>

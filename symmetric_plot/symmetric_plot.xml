@@ -1,0 +1,107 @@
+<tool id="symmetricPlot2" name="Symmetric Plot" version="1.0.0" hidden="false" force_history_refresh="True">>
+  <description>Symmetric Plot</description>
+  <requirements>
+          <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
+		  <requirement type="package" version="1.20.0">r-getopt</requirement>
+		  <requirement type="package" version="9.18">ghostscript</requirement>
+  </requirements>
+  <version_command><![CDATA[
+	   echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
+   ]]></version_command>
+  <command detect_errors="exit_code"><![CDATA[
+	  Rscript '${__tool_directory__}/symmetric_plot.r' 
+	  	--input.data='$input_table' 
+		--meta.data='$meta_table' 
+		--obs.data='$obs_table' 
+		--taxrank='$taxonomy_rank' 
+		--record='$nTop' 
+		--norm="${norm_bool}" 
+		--n.column="${selectedCol}" 
+		--g.group="${group}" 
+		--outdir="$htmlfile.files_path" 
+		--htmlfile='$htmlfile' 
+  ]]></command>
+ 
+  <inputs>
+    <param format="tabular" name="input_table" type="data" label="Count table file"/>
+    <param format="tabular" name="meta_table" type="data" label="Metadata file"/>
+    <param format="tabular" name="obs_table" type="data" label="OTU Taxonomy file"/>
+
+    <param name="nTop" type="select" display="radio" label="Select number of records to display">
+      <option value="20" selected="true">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </param>
+
+    <param name="taxonomy_rank" type="select" display="radio" label="Select a taxonomy rank">
+      <option value="Kingdom" selected="true">Kingdom</option>
+      <option value="Phylum">Phylum</option>
+      <option value="Class">Class</option>
+      <option value="Order">Order</option>
+      <option value="Family">Family</option>
+      <option value="Genus">Genus</option>
+      <option value="Species">Species</option>
+    </param>
+
+
+    <param name="norm_bool" type="boolean" truevalue="true" falsevalue="false" checked="false" label="is the data normalised?"/> 
+    <param name="selectedCol" type="data_column" data_ref="meta_table" use_header_names="TRUE" label="Variable to compare"/>
+    <param name="group" type="text" label="Fill in two comparable group separated by comma"/>
+
+  </inputs>
+ 
+  <outputs>
+    <data format="html" name="htmlfile" label="${tool.name} SymmetricPlot.html"/>   
+  </outputs>
+
+  <tests>
+  	<test>
+		<param name="input_table" value="count.txt"/>
+		<param name="meta_table" value="metadata.txt"/>
+		<param name="obs_table" value="observation.txt"/>
+		<param name="nTop" value="30"/>
+		<param name="taxonomy_rank" value="Phylum"/>
+		<param name="selectedCol" value="3"/>
+		<param name="group" value="Early,Late"/>
+		<output name="htmlfile" ftype="html" file="SymmetricPlot.html"/></test>
+   </tests>
+  <help>
+.. class:: infomark
+
+**TIP:** The input data should be in tabular format.
+
+.. class:: infomark
+
+**TIP:** The first column should contain OTU ID.
+
+.. class:: infomark
+
+**TIP:** This program takes in two files:1)raw count/normalised table, 2) a metadata file
+   
+.. class:: infomark
+  
+**What it does**
+ 
+ This program uses an R package called DESeq2 and ggplot2 to create a symmetric bar plot.
+  
+-----
+
+**Syntax**
+
+This tool creates a symmetric plot based on input table. The input table,if it is a raw count table, will be normalised by DESeq "counts" function with flag "normalised=T".
+   
+- **A normalised dataset** - set to "Yes" only if the input table is a normalised dataset
+- **Group of choice** - The group of choice will appear in the title of the plot(e.g., Tissue, protein and etc).
+- **Select a group** - This is a list of group to use in comparison(e.g., Tissue A vs Tissue B). This should be the same as "Group of choice".
+- **Select only two groups to compare** - select only two groups of interest for comparison.
+
+-----
+
+**Wrapper Author**
+
+QFAB Bioinformatics (support@qfab.org)
+
+  </help>
+</tool>
