@@ -12,10 +12,10 @@
 
       #set names=','.join( [ str( $name ) for $name in $input.keys() ])      
 
-      python $__tool_directory__/pear_stats.py "$files" "$names" $output
+      python $__tool_directory__/pear_stats.py -i "$files" -s "$names" -o $output
    ]]> </command>
   <inputs>
-    <param name="input" type="data_collection" format="txt" label="FASTQ file"/>
+    <param name="input" type="data_collection" format="txt" label="PEAR LOG FILE"/>
   </inputs>
   <outputs>
     <!--<data format="tabular" name="output" label="${tool.name}.${input.display_name}"/>-->
