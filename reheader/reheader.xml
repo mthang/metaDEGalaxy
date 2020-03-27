@@ -7,7 +7,7 @@
 	    python ${__tool_directory__}/reheader.py --version
   </version_command>
   <command detect_errors="aggressive">
-        python  ${__tool_directory__}/reheader.py $inputfile.display_name $inputfile $output $log.files_path $log
+        python  ${__tool_directory__}/reheader.py -n $inputfile.display_name -i $inputfile -o $output -d $log.files_path -l $log
   </command>
 
   <inputs>
