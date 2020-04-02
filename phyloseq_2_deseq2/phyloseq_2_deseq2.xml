@@ -3,7 +3,7 @@
   <requirements>
       <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
       <requirement type="package" version="1.20.0">r-getopt</requirement>
-	  <requirement type="package" version="1.14.1">DESeq2</requirement>
+	  <requirement type="package" version="1.26.0">DESeq2</requirement>
       <requirement type="package" version="9.18">ghostscript</requirement>
   </requirements>
   <version_command><![CDATA[
