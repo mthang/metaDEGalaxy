@@ -2,8 +2,9 @@
   <description>Symmetric Plot</description>
   <requirements>
           <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
-		  <requirement type="package" version="1.20.0">r-getopt</requirement>
-		  <requirement type="package" version="9.18">ghostscript</requirement>
+          <requirement type="package" version="1.20.0">r-getopt</requirement>
+	  <requirement type="package" version="0.6.3">r-tidyr</requirement>
+          <requirement type="package" version="9.18">ghostscript</requirement>
   </requirements>
   <version_command><![CDATA[
 	   echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
