@@ -9,7 +9,7 @@
 	  echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
  ]]></version_command>
   <command detect_errors="exit_code"><![CDATA[
-   Rscript '${__tool_directory__}/phyloseq_abundance_kingdom.r' 
+   Rscript '${__tool_directory__}/phyloseq_abundance_taxonomy.r' 
    		--biomfile='$biom_input' 
 		--metafile='$metadata_input' 
 		--xcolumn="${xaxis_column}" 
