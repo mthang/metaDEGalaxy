@@ -1,7 +1,6 @@
 library('getopt')
 library('data.table')
 suppressPackageStartupMessages(library('phyloseq'))
-suppressPackageStartupMessages(library('Cairo'))
 suppressPackageStartupMessages(library('DESeq2'))
 
 Sys.setenv("DISPLAY"=":1")
@@ -128,7 +127,8 @@ pdf(pdffile);
 plot_net(physeq_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
 garbage<-dev.off();
 
-Cairo(pngfile_net, type="png", bg="white",pointsize=12,dpi=100,units="in",width=6,height=6) 
+#Cairo(pngfile_net, type="png", bg="white",pointsize=12,dpi=100,units="in",width=6,height=6) 
+png(pngfile_net,units="in",width=6,height=6,pointsize=12,res=100,bg="white")
 plot_net(physeq_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
 garbage<-dev.off() 
 

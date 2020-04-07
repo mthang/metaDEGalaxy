@@ -1,6 +1,7 @@
-<tool id="phyloseq_kingdom" name="Phyloseq Abundance Taxonomy" version="1.22.3.2" hidden="false">
+<tool id="phyloseq_kingdom" name="Phyloseq Abundance Taxonomy" version="1.22.3.3" hidden="false">
   <description>Phyloseq Abundance Plot on Taxonomy level</description>
   <requirements>
+      <requirement type="package" version="3.4.1">r-base</requirement>
       <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
       <requirement type="package" version="1.20.0">r-getopt</requirement>
       <requirement type="package" version="9.18">ghostscript</requirement>

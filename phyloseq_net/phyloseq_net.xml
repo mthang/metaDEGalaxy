@@ -1,9 +1,11 @@
-<tool id="phyloseq_net" name="Phyloseq Network Plot" version="1.22.3" hidden="false">
+<tool id="phyloseq_net" name="Phyloseq Network Plot" version="1.24.2" hidden="false">
   <description>Phyloseq Network Plot</description>
   <requirements>
-        <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
+        <requirement type="package" version="3.4.1">r-base</requirement>
+        <requirement type="package" version="1.24.2">bioconductor-phyloseq</requirement>
+		<requirement type="package" version="1.20.0">bioconductor-deseq2</requirement>
+		<requirement type="package" version="1.10.4">r-data.table</requirement>
         <requirement type="package" version="1.20.0">r-getopt</requirement>
-		<requirement type="package" version="1.14.6">cairo</requirement>
         <requirement type="package" version="9.18">ghostscript</requirement>
   </requirements>
   <version_command><![CDATA[

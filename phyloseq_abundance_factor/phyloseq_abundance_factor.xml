@@ -1,6 +1,7 @@
-<tool id="phyloseq_abundance" name="Phyloseq Abundance plot" version="1.22.3.2" hidden="false">
+<tool id="phyloseq_abundance" name="Phyloseq Abundance plot" version="1.22.3.3" hidden="false">
   <description>Phyloseq Abundance Plot with the factors of choice</description>
     <requirements>
+       <requirement type="package" version="3.4.1">r-base</requirement>
 	   <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
 	   <requirement type="package" version="1.20.0">r-getopt</requirement>
 	   <requirement type="package" version="9.18">ghostscript</requirement>
