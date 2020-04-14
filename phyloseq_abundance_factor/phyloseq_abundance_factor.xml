@@ -86,11 +86,23 @@ Creates an abundance barplot using an R package called phyloseq_.
 - **Column used for X-axis** - The horizontal x-axis display on the barplot.
 - **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
 - **Is this one factor or two factor** - This is the facet_grid feature of phyloseq's plot_bar to allow plotting with two factors (e.g, facet_grid=~protein + allergy)
-- **Column used as factor 1** - This useds to select the first factor for facet_grid feature from the metadata file
+- **Column used as factor 1** - select the first factor for facet_grid feature from the metadata file
 
 .. _BIOM: http://biom-format.org/
 
 -----
 
+=========
+Resources
+=========
+
+**Wrapper Authors**
+
+QFAB Bioinformatics (support@qfab.org)
+
   </help>
+   <citations>
+	   <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
+	   <citation type="doi">doi:10.1186/2047-217X-1-7</citation>
+   </citations>
 </tool>

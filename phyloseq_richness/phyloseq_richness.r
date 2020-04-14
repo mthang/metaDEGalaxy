@@ -64,13 +64,13 @@ garbage<-dev.off()
 # Produce the HTML file
 htmlfile_handle <- file(htmlfile)
 html_output = c('<html><body>',
-	        '<table align="center>',
-		'<tr>',
-		'<td valign="middle" style="vertical-align:middle;">',
+	            '<table align="center">',
+		        '<tr>',
+		        '<td valign="middle" style="vertical-align:middle;">',
                 '<a href="pdffile.pdf"><img src="richness.png"/></a>',
-		'</td>',
-		'</tr>',
-		'</table>',
+		        '</td>',
+		        '</tr>',
+		        '</table>',
                 '</html></body>');
 writeLines(html_output, htmlfile_handle);
 close(htmlfile_handle);

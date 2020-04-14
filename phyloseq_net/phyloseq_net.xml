@@ -107,6 +107,18 @@ Creates a correlation network plot between samples using an R package called phy
 .. _BIOM: http://biom-format.org/
 
 -----
+=========
+Resources
+=========
+
+**Wrapper Authors**
+
+QFAB Bioinformatics (support@qfab.org)
 
   </help>
+  <citations>
+	 <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
+	 <citation type="dio">doi:10.1186/2047-217X-1-7</citation>
+  </citations>
+
 </tool>

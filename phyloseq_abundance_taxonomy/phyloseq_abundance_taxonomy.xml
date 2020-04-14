@@ -72,5 +72,15 @@ Creates an abundance with taxonomy barplot using an R package called phyloseq_.
 
 -----
 
+=========
+Resources
+=========
+
+**Wrapper Authors**
+QFAB Bioinformatics (support@qfab.org)
+
   </help>
+  <citations>
+	   <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
+  </citations>
 </tool>

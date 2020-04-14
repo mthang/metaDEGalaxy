@@ -87,8 +87,11 @@
   
 **What it does**
  
- This program uses an R package called DESeq2 and ggplot2 to create a symmetric bar plot.
-  
+ This program uses an R package called DESeq2_ and ggplot2_ to create a symmetric bar plot.
+
+.. _DESeq2 : https://bioconductor.org/packages/release/bioc/html/DESeq2.html
+.. _ggplot2: https://ggplot2.tidyverse.org/
+
 -----
 
 **Syntax**
@@ -102,9 +105,17 @@ This tool creates a symmetric plot based on input table. The input table,if it i
 
 -----
 
+=========
+Resources
+=========
+
 **Wrapper Author**
 
 QFAB Bioinformatics (support@qfab.org)
 
   </help>
+  <citations>
+  	<citation type="doi">10.18129/B9.bioc.DESeq2</citation>
+	<citation type="doi">10.1007/978-3-319-24277-4</citation>
+  </citations>
 </tool>
