@@ -62,26 +62,26 @@
 
   <tests>
   	 <test>  <!-- Test #1: Test BIOM format input -->
-	 		 <!-- <conditional name="file_source"> -->
-			    <param name="file_source_selector" value="set_biom"/>
+	 		<!-- <conditional name="file_source"> -->
+				<param name="file_source_selector" value="set_biom"/>
 				<param name="input" value="GP.biom" ftype="biom1" />
 				<param name="norm_bool" value="true"/>
 				<param name="metadata_input" value="metadata.txt" ftype="tabular"/>
 				<param name="xaxis_column" value="5" />
 				<param name="legend_column" value="4" />
-			 <!-- </conditional> -->
+			<!-- </conditional>-->
 			 <output name="htmlfile" ftype="html" file="biom_out.html" />
 	 </test>
 	 <test>  <!-- Test #2: Test TABULAR format inputs -->
-	 		 <!-- <conditional name="file_source"> -->
-			     <param name="file_source_selector" value="set_table" />
-				 <param name="input" value="count.txt" ftype="tabular"/>
-				 <param name="obstable" value="observation.txt" ftype="tabular"/>
+	 		<!-- <conditional name="file_source"> -->
+				 <param name="file_source_selector" value="set_table" />
+				 <param name="input" value="count.txt" ftype="tabular" />
+				 <param name="obstable" value="observation.txt" ftype="tabular" />
 				 <param name="metadata_input" value="metadata.txt" ftype="tabular" />
 				 <param name="norm_bool" value="true" />
 				 <param name="xaxis_column" value="5" />
 				 <param name="legend_column" value="4" />
-			<!-- </conditional>-->
+			<!-- </conditional> -->
 			<output name="htmlfile" ftype="html" file="test.html" />
 	 </test>
   </tests>
@@ -108,7 +108,6 @@ Creates a correlation network plot between samples using an R package called phy
 .. _BIOM: http://biom-format.org/
 
 -----
-
 =========
 Resources
 =========

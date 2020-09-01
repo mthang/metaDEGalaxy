@@ -20,7 +20,7 @@
   <tests>
     <test>
       <param name="inputfile" value="F3D0_R1.fastq"/>
-      <output name="output" file="reheader_F3DO1.fastq"/>
+      <output name="outout" file="test_output.txt"/>
     </test>
   </tests>
 

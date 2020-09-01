@@ -25,10 +25,10 @@
     <test>
 	  <param name="input">
 	  	<collection type="list">
-			<element name="F3D0" value="F3D0.log"/>
-			<element name="F3D1" value="F3D1.log"/>
-		</collection>
-	  </param>
+	  		   <element name="F3D0" value="F3D0.log" />
+		   	   <element name="F3D1" value="F3D1.log" />
+      	</collection>
+	   </param>
       <output name="output" format="tabular" file="test_output.txt"/>
     </test>
   </tests>

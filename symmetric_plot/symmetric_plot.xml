@@ -1,4 +1,4 @@
-<tool id="symmetricPlot2" name="Symmetric Plot" version="1.0.1" hidden="false" force_history_refresh="True">>
+<tool id="symmetricPlot" name="Symmetric Plot" version="1.0.1" hidden="false" force_history_refresh="True">>
   <description>Symmetric Plot</description>
   <requirements>
           <requirement type="package" version="3.4.1">r-base</requirement>
