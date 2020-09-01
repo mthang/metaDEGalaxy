@@ -3,7 +3,7 @@ MetaDEGalaxy is a metagenomic analysis tool running on Galaxy platform. There is
 
 
 ## References
-MikeWC, T, XinYi, C, Price, G., Gorse, D. and Field, M., 2019. [Metadegalaxy](https://f1000research.com/articles/8-726): Galaxy Workflow For Differential Abundance Analysis Of 16S Metagenomic Data.
+Mike W. C. Thang, X. Chua, G. Price, Dominique Gorse, Matthew A Field, 2019. [Metadegalaxy](https://f1000research.com/articles/8-726): Galaxy Workflow For Differential Abundance Analysis Of 16S Metagenomic Data.
 
 # Tool
 * [PEAR](https://cme.h-its.org/exelixis/web/software/pear/) - Paired-End reAd mergeR
