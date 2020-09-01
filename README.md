@@ -32,7 +32,7 @@ Mike W. C. Thang, X. Chua, G. Price, Dominique Gorse, Matthew A Field, 2019. [Me
 * symmetric_plot - using [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html) to generate a symmetric plot 
 
 
-# The Ansible script
+# Ansible script
 This ansible script contains all the tools, scripts and Galaxy wrappers for MetaDeGalaxy. It can be used to install on a Galaxy Instance ( GVL 4.1.0 / ubuntu 14.04). More informatin can be found [here](https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook).
 
 # Data
@@ -41,7 +41,7 @@ The testing data for MetaDEGalaxy is obtained from [mothur](https://mothur.s3.us
 # Tutorial
 * Galaxy workflow tutorial can be found [here](https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook/tree/master/tutorial)
 
-# Additional Python script
+# Additional python script
 One of the python scripts are obtained from [USearch](https://www.drive5.com/python/). The script uc2otutable.py was modified to run in python3 environment.
 
 
