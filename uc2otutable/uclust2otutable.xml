@@ -17,7 +17,7 @@
   <tests>
     <test>
       <param name="inputfile" value="uc_input.txt"/>
-      <output name="output" file="table_output.txt"/>
+      <output name="output" file="uc_output.txt"/>
     </test>
   </tests>
 

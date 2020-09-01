@@ -160,6 +160,8 @@ bitmap(pngfile_symmetric,"png16m",height=10,width=10,res=100)
 plot(q)
 garbage<-dev.off()
 
+Sys.unsetenv("DISPLAY")
+
 # Produce the HTML file
  htmlfile_handle <- file(htmlfile)
  html_output = c('<html><body>',

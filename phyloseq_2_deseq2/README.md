@@ -2,9 +2,9 @@
 
 A Galaxy tool to produce normalised count table and differential expressed genes table using DESeq2 from BIOM1 file and metadata file
 
-Currently produces normalised count table and differential expressed genes table.
+This R script produces a normalised count table and a differential expressed genes table.
 
-Requires:
+Requirement:
 
 DESeq2 1.14.1
 Phyloseq 1.22.3

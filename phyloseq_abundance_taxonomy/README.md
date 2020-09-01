@@ -1,10 +1,10 @@
 # Phyloseq Abundance Taxonomy  Plot
 
-A Galaxy tool to produce abundance taxonomy  plots using Phyloseq from either a BIOM1 file or 2 input tables.
+A Galaxy tool to produce an abundance taxonomy plot using a R package Phyloseq from either a BIOM1 file or 2 input tables.
 
-Currently produces the plots embedded in a html file for output with links to a PDF file.
+This R script generates a plot embedded in a html file.
 
-Requires:
+Requirement:
 
 Phyloseq 1.22.3
 r-getopt 1.20.0

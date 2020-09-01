@@ -1,10 +1,10 @@
 # Phyloseq Abundance Plot by factor
 
-A Galaxy tool to produce abundance plot (by factor) using Phyloseq from either a BIOM1 file.
+A Galaxy tool to produce an abundance plot (by factor) using a R package Phyloseq from either a BIOM1 file.
 
-Currently produces the plots embedded in a html file for output with links to a PDF file.
+This R script produces the plots embedded in a html file.
 
-Requires:
+Requirement:
 
 Phyloseq 1.22.3
 r-getopt 1.20.0

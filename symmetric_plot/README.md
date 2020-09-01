@@ -2,9 +2,9 @@
 
 A Galaxy tool to produce symmetric plots using count table, metadata table and green genes taxonomy file.
 
-Currently produces the plots embedded in a html file for output with links to a PDF file.
+This R script produces the plots embedded in a html file.
 
-Requires:
+Requirement:
 
 Phyloseq 1.22.3
 r-getopt 1.20.0

@@ -1,12 +1,14 @@
 # Generate Paired-end reads merging statistic
 
-A Galaxy tool to produce paired-end reads merging statistic using PEAR stat log
+A Galaxy tool to produce paired-end reads merging statistic using PEAR stat log.
 
-Currently produces a paired-end read merging statistic log 
+This script produces a paired-end read merging statistic log.
 
-Requires:
+Requirement:
 
 python 3.7
+PEAR - Paired-End reAd mergeR
+Link - https://cme.h-its.org/exelixis/web/software/pear/
 
 
 ### Run reheader.py with fastq file

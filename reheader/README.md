@@ -1,10 +1,9 @@
-# Rename read name
+# Rename read identifiter
+reheader.py script is written in python and Biopython is used to handle fastq file format. This script is used to rename the read identifier in the fastq file by appending the sample name to the end of the read identifier. The wrapper (xml) file is include for the Galaxy use. 
 
-A Galaxy tool to modify read name in fastq using python and Biopython
+The output is in fastq file format with the sample name added to the read identifier.
 
-Currently produces fastq file with new read name with samplename
-
-Requires:
+Requirement:
 
 python 3.7
 Biopython 1.74

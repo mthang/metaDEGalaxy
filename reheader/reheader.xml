@@ -19,8 +19,8 @@
   </outputs>
   <tests>
     <test>
-      <param name="test_input" value="test_input.txt"/>
-      <output name="test_outout" file="test_output.txt"/>
+      <param name="inputfile" value="F3D0_R1.fastq"/>
+      <output name="output" file="reheader_F3DO1.fastq"/>
     </test>
   </tests>
 

@@ -15,7 +15,7 @@
       python $__tool_directory__/pear_stats.py -i "$files" -s "$names" -o $output
    ]]> </command>
   <inputs>
-    <param name="input" type="data_collection" format="txt" label="PEAR LOG FILE"/>
+    <param name="input" type="data_collection" format="txt" collection_type="list" label="PEAR LOG FILE"/>
   </inputs>
   <outputs>
     <!--<data format="tabular" name="output" label="${tool.name}.${input.display_name}"/>-->
@@ -23,8 +23,13 @@
   </outputs>
   <tests>
     <test>
-      <param name="input" value="F3D0.log"/>
-      <output name="test_output" file="test_output.txt"/>
+	  <param name="input">
+	  	<collection type="list">
+			<element name="F3D0" value="F3D0.log"/>
+			<element name="F3D1" value="F3D1.log"/>
+		</collection>
+	  </param>
+      <output name="output" format="tabular" file="test_output.txt"/>
     </test>
   </tests>
 
