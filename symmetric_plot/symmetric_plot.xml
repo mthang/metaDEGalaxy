@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <tool id="symmetricPlot" name="Symmetric Plot" version="1.0.1" hidden="false" force_history_refresh="True">>
   <description>Symmetric Plot</description>
   <requirements>
@@ -7,6 +8,17 @@
 		  <requirement type="package" version="1.20.0">r-getopt</requirement>
 		  <requirement type="package" version="0.6.3">r-tidyr</requirement>
 		  <requirement type="package" version="9.18">ghostscript</requirement>
+=======
+<tool id="symmetricPlot2" name="Symmetric Plot" version="1.0.1" hidden="false" force_history_refresh="True">>
+  <description>Symmetric Plot</description>
+  <requirements>
+	  <requirement type="package" version="3.4.1">r-base</requirement>
+          <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
+	  <requirement type="package" version="1.18.1">bioconductor-deseq2</requirement>
+          <requirement type="package" version="1.20.0">r-getopt</requirement>
+	  <requirement type="package" version="0.6.3">r-tidyr</requirement>
+          <requirement type="package" version="9.18">ghostscript</requirement>
+>>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
   </requirements>
   <version_command><![CDATA[
 	   echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
@@ -87,11 +99,16 @@
   
 **What it does**
  
+<<<<<<< HEAD
  This program uses an R package called DESeq2_ and ggplot2_ to create a symmetric bar plot.
 
 .. _DESeq2 : https://bioconductor.org/packages/release/bioc/html/DESeq2.html
 .. _ggplot2: https://ggplot2.tidyverse.org/
 
+=======
+ This program uses an R package called DESeq2 and ggplot2 to create a symmetric bar plot.
+  
+>>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
 -----
 
 **Syntax**
@@ -105,17 +122,23 @@ This tool creates a symmetric plot based on input table. The input table,if it i
 
 -----
 
+<<<<<<< HEAD
 =========
 Resources
 =========
 
+=======
+>>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
 **Wrapper Author**
 
 QFAB Bioinformatics (support@qfab.org)
 
   </help>
+<<<<<<< HEAD
   <citations>
   	<citation type="doi">10.18129/B9.bioc.DESeq2</citation>
 	<citation type="doi">10.1007/978-3-319-24277-4</citation>
   </citations>
+=======
+>>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
 </tool>
