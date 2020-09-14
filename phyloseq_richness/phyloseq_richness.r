@@ -78,7 +78,6 @@ html_output = c('<html><body>',
 		'</td>',
 		'</tr>',
 		'</table>',
->>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
                 '</html></body>');
 writeLines(html_output, htmlfile_handle);
 close(htmlfile_handle);
