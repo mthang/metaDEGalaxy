@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<tool id="phyloseq_richness" name="Phyloseq Richness" version="1.22.3.3" hidden="false">
-=======
 <tool id="phyloseq_richness" name="Phyloseq Richness" version="1.22.3.2" hidden="false">
->>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
   <description>Phyloseq Richness Plot</description>
      <requirements>
 	         <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
@@ -62,7 +58,6 @@ Creates an alpha biodivesrsity abundance plot using an R package called phyloseq
 
 .. _BIOM: http://biom-format.org/
 
-<<<<<<< HEAD
 -----
 
 =========
@@ -78,9 +73,7 @@ QFAB Bioinformatics (support@qfab.org)
 	    <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
 		<citation type="doi">doi:10.1186/2047-217X-1-7</citation>
 	</citations>
-=======
  -----
  
   </help>
->>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
 </tool>

@@ -1,4 +1,4 @@
-<tool id="pearStat" name="PEAR Statistics" version="1.0.0" force_history_refresh="True">
+<tool id="pearStat" name="PEAR Statistics" version="1.0.0">
   <description>Generate paired-end reads overlap Statistic from PEAR log file</description>
     <version_command>
 	    python ${__tool_directory__}/pear_stats.py --version
@@ -29,7 +29,7 @@
 		   	   <element name="F3D1" value="F3D1.log" />
       	</collection>
 	   </param>
-      <output name="output" format="tabular" file="test_output.txt"/>
+      <output name="output" file="test_output.txt"/>
     </test>
   </tests>
 

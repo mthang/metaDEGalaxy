@@ -1,4 +1,4 @@
-<tool id="rename" name="reheader" version="1.0.0" force_history_refresh="True">
+<tool id="rename" name="reheader" version="1.0.0">
   <description>Rename sequence header in FASTQ file</description>
   <requirements>
     <requirement type="package" version="1.74">biopython</requirement>

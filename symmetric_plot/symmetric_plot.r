@@ -163,7 +163,6 @@ garbage<-dev.off()
 # Produce the HTML file
  htmlfile_handle <- file(htmlfile)
  html_output = c('<html><body>',
-<<<<<<< HEAD
  	        	 '<table align="center">',
  		         '<tr>',
  		         '<td valign="middle" style="vertical-align:middle;">',
@@ -171,7 +170,6 @@ garbage<-dev.off()
  		         '</td>',
  		         '</tr>',
  		         '</table>',
-=======
  	        '<table align="center>',
  		'<tr>',
  		'<td valign="middle" style="vertical-align:middle;">',
@@ -179,7 +177,6 @@ garbage<-dev.off()
  		'</td>',
  		'</tr>',
  		'</table>',
->>>>>>> 7071f56839dc493d472263deb5bf5bf3e3909674
                  '</html></body>');
  writeLines(html_output, htmlfile_handle);
  close(htmlfile_handle);
