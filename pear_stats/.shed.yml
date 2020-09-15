@@ -1,0 +1,14 @@
+name: "pear_stats"
+owner: "qfabrepo"
+remote_repository_url: "https://github.com/QFAB-Bioinformatics/metaDEGalaxy/tree/master/pear_stats"
+categories:
+  - "Metagenomics"
+repositories:
+  metadegalaxy_pear_stats:
+    description: "Metagenomic Analysis Tools - Generate Paired-end reads merging statistic"
+    include:
+      - pear_stats.py
+      - pear_stats.xml
+      - test-data
+    exclude:
+      - README.md
