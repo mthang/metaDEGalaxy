@@ -71,13 +71,6 @@ html_output = c('<html><body>',
 		        '</td>',
 		        '</tr>',
 		        '</table>',
-	        '<table align="center>',
-		'<tr>',
-		'<td valign="middle" style="vertical-align:middle;">',
-                '<a href="pdffile.pdf"><img src="richness.png"/></a>',
-		'</td>',
-		'</tr>',
-		'</table>',
                 '</html></body>');
 writeLines(html_output, htmlfile_handle);
 close(htmlfile_handle);
