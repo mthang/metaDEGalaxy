@@ -1,7 +1,7 @@
 <tool id="uclust2otutable" name="OTUTable" version="1.0.0">
   <description>Convert UCLUST format from Vsearch to OTU Table</description>
       <requirements>
-	       <requirement type="package" version="1.5">progress</requirement>
+	       <requirement type="package" version="1.3">progress</requirement>
 	  </requirements>
   <version_command>
 	python ${__tool_directory__}/uclust2otutable.py --version
