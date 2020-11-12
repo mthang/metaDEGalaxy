@@ -19,7 +19,7 @@
   </outputs>
   <tests>
     <test>
-      <param name="inputfile" value="uc_input.txt"/>
+      <param name="inputfile" ftype="tabular" value="uc_input.txt"/>
       <output name="output" file="uc_output.txt"/>
     </test>
   </tests>
