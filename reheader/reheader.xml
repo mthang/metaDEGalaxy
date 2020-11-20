@@ -14,8 +14,8 @@
     <param format="fastq,fastq.gz,fastq.bz2" name="inputfile" type="data" label="Short read data from your current history"/>
   </inputs>
   <outputs>
-    <data name="output" format="fastq" label="${tool.name}.${inputfile.display_name}"/>
-    <data name="log" format="txt" label="${tool.name}.${inputfile.display_name}.log"/>
+    <data name="output" format="fastqsanger" label="${tool.name}.${inputfile.display_name}"/>
+    <data name="log" format="txt" label="${tool.name}.${inputfile.display_name}: log"/>
   </outputs>
   <tests>
     <test>
