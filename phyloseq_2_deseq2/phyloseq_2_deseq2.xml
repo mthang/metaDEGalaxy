@@ -1,5 +1,5 @@
-<tool id="phyloseq_DESeq2" name="DESeq2" version="1.22.3" hidden="false">
-  <description>Differential Analysis</description>
+<tool id="phyloseq_DESeq2" name="Phyloseq DESeq2" version="1.22.3" hidden="false">
+  <description>Perform differential expression analysis of BIOM file</description>
   <requirements>
       <requirement type="package" version="3.4.1">r-base</requirement>
       <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
