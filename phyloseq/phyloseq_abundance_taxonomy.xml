@@ -1,0 +1,77 @@
+<tool id="phyloseq_taxonomy" name="Phyloseq Abundance Taxonomy" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Phyloseq Abundance Plot on Taxonomy level</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="bio_tools"/>
+    <expand macro="requirements">
+        <requirement type="package" version="1.20.0">r-getopt</requirement>
+        <requirement type="package" version="9.18">ghostscript</requirement>
+    </expand>
+    <expand macro="verion_command"/>
+    <command detect_errors="exit_code"><![CDATA[
+    Rscript '${__tool_directory__}/phyloseq_abundance_taxonomy.r' 
+   		--biomfile='$biom_input' 
+		--metafile='$metadata_input' 
+		--xcolumn='${xaxis_column}'
+		--lcolumn='${legend_column}'
+		--taxonomy='${taxonomy_rank}' 
+		--outdir='$htmlfile.files_path' 
+		--htmlfile='$htmlfile'
+  ]]></command>
+ 
+    <inputs>
+        <param name="biom_input" type="data" format="biom1" label="BIOM file"/>
+        <param name="metadata_input" type="data" format="tabular" label="Metadata file"/>
+        <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="true" label="Column used for X-axis"/>
+        <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="true" label="Column used as legend"/>
+        <param name="taxonomy_rank" type="select" display="radio" label="Select a taxonomy rank">
+            <option value="Kingdom" selected="true">Kingdom</option>
+            <option value="Phylum">Phylum</option>
+            <option value="Class">Class</option>
+            <option value="Order">Order</option>
+            <option value="Family">Family</option>
+            <option value="Genus">Genus</option>
+            <option value="Species">Species</option>
+        </param>
+    </inputs>
+
+    <outputs>
+        <data name="htmlfile" format="html" label="${tool.name}.html"/>
+    </outputs>
+  
+    <tests>
+  	    <test>
+            <param name="biom_input" value="abundance_taxonomy_test.biom" ftype="biom1" />
+            <param name="metadata_input" value="abundance_taxonomy_metadata.txt" />
+            <param name="xaxis_column" value="5" />
+            <param name="legend_column" value="4" />
+            <param name="taxonomy_rank" value="Phylum" />
+            <output name="htmlfile" ftype="html" file="abundance_taxonomy_biom_out.html" />
+	    </test>
+    </tests>
+    <help>
+
+**What it does**
+Creates an abundance with taxonomy barplot using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_bar-examples.html
+
+-----
+
+**Input**
+
+
+- **BIOM file** - this is a BIOM_ file format
+- **Metadata file** - this is a metadata file of the experiment design
+- **Column used for X-axis** - The horizontal x-axis display on the barplot.
+- **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
+- **Select a taxonomy rank** - This is a taxonomy selection.
+
+
+.. _BIOM: http://biom-format.org/
+
+    </help>
+    <expand macro="citations"/>
+    <expand macro="creator"/>
+</tool>
