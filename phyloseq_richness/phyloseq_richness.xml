@@ -1,14 +1,18 @@
-<tool id="phyloseq_richness" name="Phyloseq Richness" version="1.22.3.2" hidden="false">
-  <description>Phyloseq Richness Plot</description>
-     <requirements>
-	         <requirement type="package" version="1.22.3">bioconductor-phyloseq</requirement>
-			 <requirement type="package" version="1.20.0">r-getopt</requirement>
-			 <requirement type="package" version="9.18">ghostscript</requirement>
+<tool id="phyloseq_richness" name="Phyloseq Richness" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="21.05">
+    <description>Phyloseq Richness Plot</description>
+    <macros>
+        <token name="@TOOL_VERSION@">1.22.3</token>
+        <token name="@VERSION_SUFFIX@">3</token>
+    </macros>
+    <requirements>
+	    <requirement type="package" version="@TOOL_VERSION@">bioconductor-phyloseq</requirement>
+		<requirement type="package" version="1.20.0">r-getopt</requirement>
+		<requirement type="package" version="9.18">ghostscript</requirement>
 	</requirements>
 	<version_command><![CDATA[
 		echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
 	]]></version_command>
-  <command detect_errors="exit_code"><![CDATA[
+    <command detect_errors="exit_code"><![CDATA[
         Rscript '${__tool_directory__}/phyloseq_richness.r' 
 			--biomfile='$biom_input' 
 			--metafile='$metadata_input' 
@@ -18,29 +22,27 @@
 			--htmlfile='$htmlfile'
   ]]></command>
  
-  <inputs>
-    <param format="biom1" name="biom_input" type="data" label="BIOM file"/>
-    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
-    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used for X-axis"/>
-    <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as legend"/>
-  </inputs>
+    <inputs>
+        <param name="biom_input" type="data" format="biom1" label="BIOM file"/>
+        <param name="metadata_input" type="data" format="tabular" label="Metadata file"/>
+        <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="true" label="Column used for X-axis"/>
+        <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="true" label="Column used as legend"/>
+    </inputs>
  
-  <outputs>
+    <outputs>
         <data format="html" name="htmlfile" label="${tool.name}.html"/>
-  </outputs>
+    </outputs>
 
- <tests>
- 	<test>
-		<param name="biom_input" value="test.biom" ftype="biom1" />
-		<param name="metadata_input" value="metadata.txt"  />
-		<param name="xaxis_column" value="5" />
-		<param name="legend_column" value="4" />
-		<output name="htmlfile" ftype="html" file="biom_out.html" />
-	</test>
- </tests>
-
-
-  <help>
+    <tests>
+ 	    <test>
+            <param name="biom_input" value="test.biom" ftype="biom1" />
+            <param name="metadata_input" value="metadata.txt"  />
+            <param name="xaxis_column" value="5" />
+            <param name="legend_column" value="4" />
+            <output name="htmlfile" ftype="html" file="biom_out.html" />
+	    </test>
+    </tests>
+    <help>
 **What it does**
 Creates an alpha biodivesrsity abundance plot using an R package called phyloseq_.
 
@@ -68,9 +70,12 @@ Resources
 
 QFAB Bioinformatics (support@qfab.org)
  
-  </help>
+    </help>
     <citations>
 	    <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
 		<citation type="doi">doi:10.1186/2047-217X-1-7</citation>
 	</citations>
+    <creator>
+        <organization name="Galaxy Australia" url="https://site.usegalaxy.org.au"/>
+    </creator>
 </tool>
