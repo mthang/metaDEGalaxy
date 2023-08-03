@@ -1,0 +1,36 @@
+<macros>
+    <token name="@TOOL_VERSION@">1.22.3</token>
+    <token name="@VERSION_SUFFIX@">3</token>
+    
+    <xml name="requirements">
+        <requirements>
+            <requirement type="package" version="@TOOL_VERSION@">bioconductor-phyloseq</requirement>
+            <yield/>
+        </requirements>
+    </xml>
+
+    <xml name="bio_tools">
+        <xrefs>
+            <xref type="bio.tools">phyloseq</xref>
+        </xrefs>
+    </xml>
+
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.18129/B9.bioc.phyloseq</citation>
+            <citation type="doi">doi:10.1186/2047-217X-1-7</citation>
+        </citations>
+    </xml>
+
+    <xml name="creator">
+        <creator>
+            <organization name="Galaxy Australia" url="https://site.usegalaxy.org.au"/>
+        </creator>
+    </xml>
+    <xml name="verion_command">
+        <version_command><![CDATA[
+        echo $(R --version | grep version | grep -v GNU)", phyloseq version" $(R --vanilla --slave -e "library(phyloseq); cat(sessionInfo()\$otherPkgs\$phyloseq\$Version)" 2> /dev/null | grep -v -i "WARNING: ")
+    ]]></version_command>
+    </xml>
+
+</macros>
